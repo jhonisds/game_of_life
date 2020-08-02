@@ -24,6 +24,16 @@ defmodule GameOfLife.Grid do
     }
   end
 
+  def activate(grid, x, y) do
+    new_row =
+      grid.cells
+      |> elem(x - 1)
+      |> put_elem(y - 1, true)
+
+    cells = put_elem(grid.cells, x - 1, new_row)
+    %__MODULE__{grid | cells: cells}
+  end
+
   defp init_cells(size) do
     List.duplicate(false, size)
     |> List.to_tuple()

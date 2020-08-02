@@ -5,6 +5,18 @@ defmodule GameOfLife.Grid do
 
   defstruct [:size, :cells]
 
+  @type t :: %__MODULE__{
+          size: pos_integer(),
+          cells: tuple()
+        }
+
+  @doc """
+      iex> GameOfLife.Grid.new 3
+      %GameOfLife.Grid{
+      cells: {{false, false, false}, {false, false, false}, {false, false, false}},
+      size: 3
+      }
+  """
   def new(size) do
     %__MODULE__{
       size: size,

@@ -86,10 +86,8 @@ defmodule GameOfLife.GridTest do
       |> Grid.activate(3, 4)
 
     result =
-      for x <- 1..size do
-        for y <- 1..size do
-          Grid.will_thrive?(grid, x, y)
-        end
+      for x <- 1..size, y <- 1..size do
+        Grid.will_thrive?(grid, x, y)
       end
 
     result =

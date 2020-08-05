@@ -49,28 +49,6 @@ defmodule GameOfLife.Grid do
     |> elem(y - 1)
   end
 
-  def will_thrive?(grid, x, y) do
-    neighbours = active_neighbours(grid, x, y)
-    active? = active?(grid, x, y)
-
-    cond do
-      active? and neighbours < 2 ->
-        false
-
-      active? and neighbours > 3 ->
-        false
-
-      not active? and neighbours == 3 ->
-        true
-
-      active? and neighbours in 2..3 ->
-        true
-
-      not active? ->
-        false
-    end
-  end
-
   defp init_cells(size) do
     List.duplicate(false, size)
     |> List.to_tuple()

@@ -71,11 +71,11 @@ defmodule GameOfLife.GridTest do
 
     grid =
       Grid.new(size)
-      |> Grid.activate(3, 1)
-      |> Grid.activate(4, 2)
-      |> Grid.activate(2, 3)
-      |> Grid.activate(3, 3)
-      |> Grid.activate(4, 3)
+      |> Grid.activate_cell(3, 1)
+      |> Grid.activate_cell(4, 2)
+      |> Grid.activate_cell(2, 3)
+      |> Grid.activate_cell(3, 3)
+      |> Grid.activate_cell(4, 3)
 
     expected =
       Grid.new(size)

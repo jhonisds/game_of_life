@@ -49,6 +49,9 @@ defmodule GameOfLife.Grid do
     |> elem(y - 1)
   end
 
+  def cells_to_analyze do
+  end
+
   defp init_cells(size) do
     List.duplicate(false, size)
     |> List.to_tuple()
@@ -66,7 +69,7 @@ defmodule GameOfLife.Grid do
     %__MODULE__{grid | cells: cells}
   end
 
-  defp active_neighbours(grid, x, y) do
+  def active_neighbours(grid, x, y) do
     grid
     |> neighbours(x, y)
     |> Enum.map(fn {x2, y2} -> active?(grid, x2, y2) end)

@@ -19,6 +19,10 @@ defmodule GameOfLife.Game do
     }
   end
 
+  def activate_cell(game, x, y) do
+    %{game | world: Grid.activate(game.world, x, y)}
+  end
+
   def advance_generation(game) do
     current_state = game.world
 
@@ -29,11 +33,17 @@ defmodule GameOfLife.Game do
       |> Enum.reduce(Grid.new(current_state.size), fn {x, y}, acc ->
         Grid.activate(acc, x, y)
       end)
+
+    %__MODULE__{
+      world: next_state,
+      generation: game.generation + 1,
+      previous_generations: [{game.generation, current_state} | game.previous_generations]
+    }
   end
 
   def will_thrive?(world, x, y) do
     neighbours = Grid.active_neighbours(world, x, y)
-    active? = active?(world, x, y)
+    active? = Grid.active?(world, x, y)
 
     cond do
       active? and neighbours < 2 ->

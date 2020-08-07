@@ -28,7 +28,7 @@ defmodule GameOfLife.Game do
 
     next_state =
       current_state
-      |> Grid.cells_to_analize()
+      |> Grid.cells_to_analyze()
       |> Enum.filter(fn {x, y} -> will_thrive?(current_state, x, y) end)
       |> Enum.reduce(Grid.new(current_state.size), fn {x, y}, acc ->
         Grid.activate(acc, x, y)

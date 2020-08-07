@@ -49,7 +49,10 @@ defmodule GameOfLife.Grid do
     |> elem(y - 1)
   end
 
-  def cells_to_analyze do
+  def cells_to_analyze(grid) do
+    for x <- 1..grid.size, y <- 1..grid.size do
+      {x, y}
+    end
   end
 
   defp init_cells(size) do

@@ -2,10 +2,9 @@ defmodule GameOfLife.Game do
   @moduledoc """
   Module Game
   """
+  alias GameOfLife.Grid
 
   defstruct [:world, :generation, :previous_generations]
-
-  alias GameOfLife.Grid
 
   def new(options) do
     size = Keyword.get(options, :size, 32)

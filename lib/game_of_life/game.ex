@@ -54,7 +54,13 @@ defmodule GameOfLife.Game do
   end
 
   @doc """
+  Returns whether or not the cell in (`x`, `y`) should be active on the next
+  generation given the current state of the `world`.
 
+  A cell will be active on the next generation if:
+    a) They are currently deactivated and have exactly 3 active neighbours.
+    b) They are currently activated and have between 2 and 3 neighbours
+  In all others cases a cell would not thrive.
   """
   def will_thrive?(world, x, y) do
     neighbours = Grid.active_neighbours(world, x, y)

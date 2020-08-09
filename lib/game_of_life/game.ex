@@ -18,10 +18,23 @@ defmodule GameOfLife.Game do
     }
   end
 
+  @doc """
+  Activates a given cell on the current world grid.
+  """
   def activate_cell(game, x, y) do
     %{game | world: Grid.activate(game.world, x, y)}
   end
 
+  @doc """
+  Advances a generations on `game`.
+
+  Does dso by first identifying all cells that are meant to be analized within
+  the world, then cheking those cells individually to see if they should
+  persist through the next generation (see `will_thrive?/3`) and then, finally,
+  building a new world grid with all cells that should be active on the new
+  generation.
+
+  """
   def advance_generation(game) do
     current_state = game.world
 
@@ -40,6 +53,9 @@ defmodule GameOfLife.Game do
     }
   end
 
+  @doc """
+
+  """
   def will_thrive?(world, x, y) do
     neighbours = Grid.active_neighbours(world, x, y)
     active? = Grid.active?(world, x, y)

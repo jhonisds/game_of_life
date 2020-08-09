@@ -12,7 +12,7 @@ Each game is started running `GameOfLife.Game.new(options)` where `options` is
 a Keyword with the follow key/options:
 
 | Options | Type | Required | Description |
-| `:size` | `pos_integer` | `no` | The length of side the plan |
+| `:size` | `pos_integer` | `no` | The length of the side on plan |
 
 ## Installation
 

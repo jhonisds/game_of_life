@@ -21,3 +21,10 @@ defmodule GameofLife.World.Binary do
     <<0::size(area)>>
   end
 end
+
+defimpl GameOfLife.PetriDish, for: GameOfLife.World.Binary do
+  def activate(t, x, y) do
+    position = x + t.size * (y - 1) - 1
+    :binary.at(t.cells, position)
+  end
+end

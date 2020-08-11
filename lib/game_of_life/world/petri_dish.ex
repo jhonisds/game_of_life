@@ -1,4 +1,4 @@
-defprotocol GameOfLife.PretiDish do
+defprotocol GameOfLife.PetriDish do
   @moduledoc """
   Protocol Petri Dish
   """

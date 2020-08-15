@@ -16,4 +16,11 @@ defmodule GameOfLife.World.MultidimensionalTuple do
       cells: init_cells(size)
     }
   end
+
+  defp init_cells(size) do
+    List.duplicate(false, size)
+    |> List.to_tuple()
+    |> List.duplicate(size)
+    |> List.to_tuple()
+  end
 end

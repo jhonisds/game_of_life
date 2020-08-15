@@ -2,7 +2,7 @@ defmodule GameOfLife.Game do
   @moduledoc """
   Module Game
   """
-  alias GameOfLife.Grid
+  alias GameOfLife.PetriDish
 
   defstruct [:world, :generation, :previous_generations]
 
@@ -22,7 +22,7 @@ defmodule GameOfLife.Game do
   Activates a given cell on the current world grid.
   """
   def activate_cell(game, x, y) do
-    %{game | world: Grid.activate(game.world, x, y)}
+    %{game | world: PetriDish.activate(game.world, x, y)}
   end
 
   @doc """
@@ -40,10 +40,10 @@ defmodule GameOfLife.Game do
 
     next_state =
       current_state
-      |> Grid.cells_to_analyze()
+      |> PetriDish.cells_to_analyze()
       |> Enum.filter(fn {x, y} -> will_thrive?(current_state, x, y) end)
-      |> Enum.reduce(Grid.new(current_state.size), fn {x, y}, acc ->
-        Grid.activate(acc, x, y)
+      |> Enum.reduce(PetriDish.new(current_state.size), fn {x, y}, acc ->
+        PetriDish.activate(acc, x, y)
       end)
 
     %__MODULE__{
@@ -63,8 +63,8 @@ defmodule GameOfLife.Game do
   In all others cases a cell would not thrive.
   """
   def will_thrive?(world, x, y) do
-    neighbours = Grid.active_neighbours(world, x, y)
-    active? = Grid.active?(world, x, y)
+    neighbours = PetriDish.active_neighbours(world, x, y)
+    active? = PetriDish.active?(world, x, y)
 
     cond do
       active? and neighbours < 2 ->

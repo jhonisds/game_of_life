@@ -1,4 +1,4 @@
-defmodule GameofLife.World.Binary do
+defmodule GameOfLife.World.Binary do
   @moduledoc """
   Module binary
   """

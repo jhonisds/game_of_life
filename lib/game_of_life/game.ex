@@ -4,15 +4,13 @@ defmodule GameOfLife.Game do
   """
   alias GameOfLife.PetriDish
 
+  @type t :: %__MODULE__{}
   defstruct [:world, :generation, :previous_generations]
 
-  def new(options) do
-    size = Keyword.get(options, :size, 32)
-
-    grid = Grid.new(size)
-
+  @spec new(PetriDish.t()) :: t
+  def new(initial_world) do
     %__MODULE__{
-      world: grid,
+      world: initial_world,
       generation: 1,
       previous_generations: []
     }
@@ -42,7 +40,7 @@ defmodule GameOfLife.Game do
       current_state
       |> PetriDish.cells_to_analyze()
       |> Enum.filter(fn {x, y} -> will_thrive?(current_state, x, y) end)
-      |> Enum.reduce(PetriDish.new(current_state.size), fn {x, y}, acc ->
+      |> Enum.reduce(PetriDish.clean(current_state.size), fn {x, y}, acc ->
         PetriDish.activate(acc, x, y)
       end)
 

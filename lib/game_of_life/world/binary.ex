@@ -21,19 +21,3 @@ defmodule GameOfLife.World.Binary do
     <<0::size(area)>>
   end
 end
-
-defimpl GameOfLife.PetriDish, for: GameOfLife.World.Binary do
-  def activate(t, x, y) do
-    position = x + t.size * (y - 1) - 1
-
-    <<head::size(position), _::size(1), rest::binary>> = t.cells
-    %{t | cells: <<head, 1, rest>>}
-  end
-
-  def deactivate(t, x, y) do
-    position = x + t.size * (y - 1) - 1
-
-    <<head::size(position), _::size(1), rest::binary>> = t.cells
-    %{t | cells: <<head, 0, rest>>}
-  end
-end

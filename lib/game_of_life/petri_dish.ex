@@ -16,7 +16,7 @@ defprotocol GameOfLife.PetriDish do
   def celss_to_analyze(petri_dish)
 
   @spec active_neighbours(t, pos_integer(), pos_integer()) :: non_neg_integer()
-  def active_neighbours(petri_dish)
+  def active_neighbours(petri_dish, x, y)
 
   @spec clean(t) :: t
   def clean(t) :: t

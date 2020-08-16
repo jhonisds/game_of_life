@@ -1,4 +1,4 @@
-defprotocol GameOfLife.PetriDish do
+defprotocol GameOfLife.PetriDishable do
   @moduledoc """
   Protocol Petri Dish
   """
@@ -18,7 +18,7 @@ defprotocol GameOfLife.PetriDish do
   def clean(petri_dish)
 end
 
-defmodule State do
+defmodule GameOfLife.PetriDish do
   def activate(t, x, y) do
     PetriDish.change_state(t, x, y, true)
   end

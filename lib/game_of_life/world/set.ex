@@ -1,6 +1,6 @@
 defmodule GameOfLife.World.Set do
   @moduledoc """
-  Module binary
+  Module Set.
   """
   defstruct [:size, :cells]
 

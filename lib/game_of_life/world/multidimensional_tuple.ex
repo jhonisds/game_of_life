@@ -33,7 +33,7 @@ defmodule GameOfLife.World.MultidimensionalTuple do
   end
 end
 
-defimpl GameOfLife.PetriDish, for: GameOfLife.World.MultidimensionalTuple do
+defimpl GameOfLife.PetriDishable, for: GameOfLife.World.MultidimensionalTuple do
   def clean(grid) do
     GameOfLife.World.MultidimensionalTuple.new(grid.size)
   end

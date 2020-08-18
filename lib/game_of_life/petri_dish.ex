@@ -19,6 +19,9 @@ defprotocol GameOfLife.PetriDishable do
 end
 
 defmodule GameOfLife.PetriDish do
+  @moduledoc """
+  Module Petri dish.
+  """
   def activate(t, x, y) do
     PetriDish.change_state(t, x, y, true)
   end

@@ -1,8 +1,8 @@
 defmodule GameOfLife.World.MultidimensionalTupleTest do
   use ExUnit.Case, async: true
 
-  alias GameOfLife.World.MultidimensionalTuple
   alias GameOfLife.PetriDish
+  alias GameOfLife.World.MultidimensionalTuple
 
   @tag :done
   test "new/1 creates a grid with specified size" do
